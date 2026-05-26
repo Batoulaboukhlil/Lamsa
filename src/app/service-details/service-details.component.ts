@@ -23,16 +23,13 @@ export class ServiceDetailsComponent {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('ID from URL:', id);
 
     if (id) {
       this.serviceService.getById(id).subscribe((data) => {
         this.service = data;
-        console.log(this.service.options.length)
       });
       this.serviceImagesService.getImgByServiceId({ id }).subscribe((data) => {
         this.img = data as ServiceImg[];
-        console.log(this.img[0].imageUrl);
       });
     }
   }

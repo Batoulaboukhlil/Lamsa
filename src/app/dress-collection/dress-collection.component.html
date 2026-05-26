@@ -1,0 +1,69 @@
+<section class="min-h-screen bg-black text-white py-16 px-6">
+
+  <div class="flex flex-col items-center">
+
+    <h1 class="text-5xl font-bold text-center mb-6">
+      Dress Collection
+    </h1>
+
+    <button routerLink="" class="font-bold bg-black text-white px-6 py-3 rounded-full">
+      Home
+    </button>
+
+  </div>
+
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <div
+      *ngFor="let collection of collections"
+      class="group cursor-pointer"
+      (click)="openGallery(collection.images)">
+
+      <div class="overflow-hidden rounded-3xl relative">
+
+        <img
+          [src]="collection.cover"
+          [alt]="collection.title"
+          class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-500">
+
+        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+
+      </div>
+
+      <h2 class="text-2xl font-semibold mt-4 text-center">
+        {{ collection.title }}
+        {{ collection.priceRange}}
+      </h2>
+
+    </div>
+
+  </div>
+
+  <div
+    *ngIf="isViewerOpen"
+    class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+
+    <button
+      (click)="closeGallery()"
+      class="absolute top-6 right-6 text-white text-5xl z-50">
+      ×
+    </button>
+
+    <button
+      (click)="prevImage()"
+      class="absolute left-6 text-white text-6xl z-50">
+      ❮
+    </button>
+
+    <img
+      [src]="selectedImages[currentIndex]"
+      class="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl shadow-2xl">
+
+    <button
+      (click)="nextImage()"
+      class="absolute right-6 text-white text-6xl z-50">
+      ❯
+    </button>
+  </div>
+</section>
