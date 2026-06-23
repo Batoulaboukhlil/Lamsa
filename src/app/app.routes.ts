@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { ServiceComponent } from './service/service.component';
 import { ServiceBoardComponent } from './service-board/service-board.component';
-import { ContactComponent } from './contact/contact.component';
+import ContactComponent from './contact/contact.component';
 import {AboutComponent} from './about/about.component';
 import {ServiceDetailsComponent} from './service-details/service-details.component';
 import {HomeComponent} from './home/home.component';

@@ -2,6 +2,6 @@ import {Service} from './service.model';
 
 export interface ServiceImg{
   id: string;
-  imageUrl: string;
+  imagesUrl: string[];
   service: Service;
 }

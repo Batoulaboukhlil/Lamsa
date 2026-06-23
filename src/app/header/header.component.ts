@@ -8,6 +8,7 @@ import {CommonModule} from '@angular/common';
     RouterLink, CommonModule
   ],
   templateUrl: './header.component.html',
+  standalone: true,
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {

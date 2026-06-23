@@ -54,5 +54,14 @@ export class ServiceImagesService {
   }
 }
 
+const API_dressCollections = 'http://localhost:3000/api/dress-collections';
+@Injectable({ providedIn: 'root' })
+export class DressCollectionService {
+  constructor(private http: HttpClient) {}
+
+  getAll() {
+    return this.http.get(API_dressCollections);
+  }
+}
 
 

@@ -12,36 +12,46 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 pl-16">
-      <!-- Contact Form -->
       <div class="holographic-card p-8 rounded-2xl pl-8">
         <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6" id="contactForm">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-              <input type="text" class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" placeholder="Luna Lovegood">
+              <input
+                type="text"
+                formControlName="name"
+                class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-black placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+                placeholder="Luna Lovegood">
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-              <input type="email" class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" placeholder="email@example.com">
+              <input
+                type="email"
+                formControlName="email"
+                class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-black placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+                placeholder="email@example.com">
             </div>
           </div>
 
           <div>
             <label class="block text-sm font-medium text-gray-300 mb-2">Service</label>
-            <select class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300">
-              <option value="">****</option>
-              <option value="ai">****</option>
-              <option value="vr">****</option>
-              <option value="blockchain">****</option>
-              <option value="iot">****</option>
-              <option value="quantum">****</option>
-              <option value="metaverse">****</option>
+            <select
+              formControlName="serviceName"
+              class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-black focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+            >
+              <option *ngFor="let service of services" [value]="service.name">
+                {{ service.name }}
+              </option>
             </select>
           </div>
 
           <div>
             <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-            <textarea rows="4" class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" placeholder="Add your message here...."></textarea>
+            <textarea
+              rows="4"
+              formControlName="message"
+              class="w-full bg-white/5 border border-black/10 rounded-lg px-4 py-3 text-black placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+              placeholder="Add your message here...."></textarea>
           </div>
 
           <button type="submit" class="magnetic-button w-full bg-gradient-to-r from-cyan-500 to-purple-500 px-8 py-4 rounded-lg text-white font-semibold hover:scale-105 transition-all duration-300">
@@ -50,7 +60,6 @@
         </form>
       </div>
 
-      <!-- Contact Info -->
       <div class="space-y-6 bg-black p-2 rounded-2xl pl-8">
         <div class="holographic-card p-6  rounded-xl">
           <div class="flex items-center space-x-4">
@@ -59,7 +68,7 @@
             </div>
             <div>
               <h3 class="text-lg font-semibold text-cyan-400">Email</h3>
-              <p class="text-gray-400">****</p>
+              <p class="text-gray-400">lamsa.party&#64;gmail.com</p>
             </div>
           </div>
         </div>
@@ -67,11 +76,11 @@
         <div class="holographic-card p-6 rounded-xl">
           <div class="flex items-center space-x-4">
             <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-              <i class="fas fa-phone text-white"></i>
+              <i class="fa-brands fa-tiktok text-white"></i>
             </div>
             <div>
-              <h3 class="text-lg font-semibold text-purple-400">GSM</h3>
-              <p class="text-gray-400">****</p>
+              <h3 class="text-lg font-semibold text-purple-400">Tiktok</h3>
+              <p class="text-gray-400">lamsa_party</p>
             </div>
           </div>
         </div>
@@ -83,7 +92,7 @@
             </div>
             <div>
               <h3 class="text-lg font-semibold text-green-400">Adress</h3>
-              <p class="text-gray-400">****<br>****</p>
+              <p class="text-gray-400">Belgium<br>Gent</p>
             </div>
           </div>
         </div>

@@ -43,9 +43,13 @@
 
               <!-- Options -->
               <div class="grid text-xs text-gray-500"
-                   [ngClass]="'grid-cols-' + service.options.length">
+                   [ngClass]="{
+    'grid-cols-1': (service.options.length === 1),
+    'grid-cols-2': (service.options.length === 2),
+    'grid-cols-3': (service.options.length >= 3)
+  }">
 
-                <div *ngFor="let option of service.options; let i = index"
+                <div *ngFor="let option of service.options;"
                      class="text-center">
 
                   <div>{{ option }}</div>
@@ -62,39 +66,33 @@
 
       </div>
 
-      <!-- Right Side Images -->
-      <div class="grid gap-4 mt-28"
-           [ngClass]="{
-          'grid-cols-1': (img?.length || 1) === 1,
-          'grid-cols-2': (img?.length || 0) === 2,
-          'grid-cols-3': (img?.length || 0) >= 3
-           }">
+      <ng-container *ngIf="count > 0; else fallbackImage">
+        <div
+          class="grid gap-4 mt-28"
+          [ngClass]="{
+      'grid-cols-1': (img.imagesUrl.length === 1),
+      'grid-cols-2': (!(img.imagesUrl.length !== 2)),
+      'grid-cols-3': (img.imagesUrl.length >= 3)
+    }">
 
-        <!-- If images exist -->
-        <ng-container *ngIf="img && img.length > 0; else fallbackImage">
-
-          <div *ngFor="let image of img">
-
+          <div *ngFor="let image of img.imagesUrl">
             <img
-              [src]="image.imageUrl"
+              [src]="image"
               alt="Service Image"
               class="w-full h-64 object-cover rounded-xl shadow-sm hover:scale-105 transition duration-300">
-
           </div>
 
-        </ng-container>
+        </div>
+      </ng-container>
 
-        <!-- Fallback Logo -->
-        <ng-template #fallbackImage>
-
+      <ng-template #fallbackImage>
+        <div class="mt-28">
           <img
-            [src]="service?.logo"
+            [src]="service.logo || 'assets/default-logo.png'"
             alt="Service Logo"
             class="w-full h-64 object-cover rounded-xl shadow-sm">
-
-        </ng-template>
-
-      </div>
+        </div>
+      </ng-template>
 
     </div>
 

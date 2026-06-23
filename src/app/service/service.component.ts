@@ -11,6 +11,7 @@ import {ServiceBoardComponent} from '../service-board/service-board.component';
   imports: [CommonModule, ServiceBoardComponent],
   templateUrl: './service.component.html',
   styleUrl: './service.component.css',
+  standalone: true
 })
 export class ServiceComponent {
   @Input() services: Service[] = [];

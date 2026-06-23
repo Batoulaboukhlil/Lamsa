@@ -11,11 +11,13 @@ import {ActivatedRoute} from '@angular/router';
     NgClass
   ],
   templateUrl: './service-details.component.html',
+  standalone: true,
   styleUrl: './service-details.component.css'
 })
 export class ServiceDetailsComponent {
   @Input() service!: Service;
-  @Input() img: ServiceImg[] = [];
+  @Input() img!: ServiceImg;
+  count = 0;
 
   constructor(    private route: ActivatedRoute,
                   private serviceService: ServiceService, private serviceImagesService: ServiceImagesService
@@ -29,7 +31,8 @@ export class ServiceDetailsComponent {
         this.service = data;
       });
       this.serviceImagesService.getImgByServiceId({ id }).subscribe((data) => {
-        this.img = data as ServiceImg[];
+        this.img = data as ServiceImg;
+        this.count = this.img?.imagesUrl?.length ?? 0;
       });
     }
   }

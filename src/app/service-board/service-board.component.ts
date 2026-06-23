@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   templateUrl: './service-board.component.html',
   styleUrl: './service-board.component.css',
   providers: [ServiceService],
+  standalone: true
 })
 export class ServiceBoardComponent {
   @Input() service!: Service;
@@ -20,7 +21,6 @@ export class ServiceBoardComponent {
   ngOnInit(): void {}
 
   goToDetails(service: Service) {
-    console.log('Clicked service:', service);
 
     if (service && service._id) {
       this.router.navigate(['/service-details', service._id]);
