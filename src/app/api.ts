@@ -2,7 +2,7 @@ import {contentChild, Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_services = 'http://localhost:3000/api/services';
+const API_services = 'https://lamsa-backend-n2a2.onrender.com/api/services';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceService {
@@ -19,7 +19,7 @@ export class ServiceService {
 }
 
 
-const API_categories = 'http://localhost:3000/api/categories';
+const API_categories = 'https://lamsa-backend-n2a2.onrender.com/api/categories';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
@@ -30,7 +30,7 @@ export class CategoryService {
   }
 }
 
-const API_contact = 'http://localhost:3000/api/contact';
+const API_contact = 'https://lamsa-backend-n2a2.onrender.com/api/contact';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
@@ -41,7 +41,7 @@ export class ContactService {
   }
 }
 
-const API_serviceImages = 'http://localhost:3000/api/service-images';
+const API_serviceImages = 'https://lamsa-backend-n2a2.onrender.com/api/service-images';
 @Injectable({ providedIn: 'root' })
 export class ServiceImagesService {
   constructor(private http: HttpClient) {}
@@ -54,7 +54,7 @@ export class ServiceImagesService {
   }
 }
 
-const API_dressCollections = 'http://localhost:3000/api/dress-collections';
+const API_dressCollections = 'https://lamsa-backend-n2a2.onrender.com/api/dress-collections';
 @Injectable({ providedIn: 'root' })
 export class DressCollectionService {
   constructor(private http: HttpClient) {}
