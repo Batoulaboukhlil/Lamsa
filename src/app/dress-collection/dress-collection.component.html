@@ -1,3 +1,4 @@
+
 <section class="min-h-screen bg-black text-white py-16 px-6">
 
   <div class="flex flex-col items-center">
@@ -6,14 +7,53 @@
       Dress Collection
     </h1>
 
-    <button routerLink="" class="font-bold bg-black text-white px-6 py-3 rounded-full">
+    <button
+      routerLink=""
+      class="font-bold bg-black text-white px-6 py-3 rounded-full">
       Home
     </button>
 
   </div>
 
+  <!-- Loading indicator -->
+  <div
+    *ngIf="isLoading"
+    class="flex flex-col items-center justify-center py-20"
+    role="status"
+    aria-live="polite">
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      class="w-14 h-14 border-4 border-white/20
+             border-t-white rounded-full animate-spin">
+    </div>
+
+    <p class="mt-4 text-white text-lg">
+      Loading collections...
+    </p>
+
+  </div>
+
+  <!-- Error message -->
+  <div
+    *ngIf="!isLoading && errorMessage"
+    class="text-center py-10">
+
+    <p class="text-red-400">
+      {{ errorMessage }}
+    </p>
+
+    <button
+      (click)="loadCollections()"
+      class="mt-4 font-bold underline">
+      Try Again
+    </button>
+
+  </div>
+
+  <!-- Collections grid -->
+  <div
+    *ngIf="!isLoading && !errorMessage"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
     <div
       *ngFor="let collection of collections"
@@ -25,21 +65,35 @@
         <img
           [src]="collection.cover"
           [alt]="collection.title"
-          class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-500">
+          class="w-full h-[500px] object-cover
+                 group-hover:scale-110 transition duration-500">
 
-        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+        <div
+          class="absolute inset-0 bg-black/30
+                 group-hover:bg-black/10 transition">
+        </div>
 
       </div>
 
       <h2 class="text-2xl font-semibold mt-4 text-center">
         {{ collection.title }}
-        {{ collection.priceRange}}
+        {{ collection.priceRange }}
       </h2>
 
     </div>
 
   </div>
 
+  <!-- Empty state -->
+  <div
+    *ngIf="!isLoading && !errorMessage && collections.length === 0"
+    class="text-center py-10 text-white/60">
+
+    No collections available.
+
+  </div>
+
+  <!-- Image gallery -->
   <div
     *ngIf="isViewerOpen"
     class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
@@ -65,5 +119,7 @@
       class="absolute right-6 text-white text-6xl z-50">
       ❯
     </button>
+
   </div>
+
 </section>

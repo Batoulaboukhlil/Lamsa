@@ -1,18 +1,69 @@
+
 <section id="services" class="py-20 relative section-reveal">
+
   <div class="max-w-7xl mx-auto px-6">
+
     <div class="text-center mb-16">
+
       <h2 class="text-5xl font-bold mb-6">
-          <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Lamsa Services
-          </span>
+        <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          Lamsa Services
+        </span>
       </h2>
+
       <p class="text-xl text-gray-400 max-w-2xl mx-auto">
         Make your party smarter with our services.
       </p>
+
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <app-service-board *ngFor="let service of services" [service]="service"></app-service-board>
+    <!-- Loading indicator -->
+    <div
+      *ngIf="isLoading"
+      class="flex flex-col items-center justify-center py-16"
+      role="status"
+      aria-live="polite">
+
+      <div
+        class="w-14 h-14 border-4 border-gray-600
+               border-t-blue-400 rounded-full animate-spin">
+      </div>
+
+      <p class="mt-4 text-gray-400 text-lg">
+        Loading services...
+      </p>
+
     </div>
+
+    <!-- Error message -->
+    <div
+      *ngIf="!isLoading && errorMessage"
+      class="text-center py-10">
+
+      <p class="text-red-400">
+        {{ errorMessage }}
+      </p>
+
+      <button
+        (click)="loadServices()"
+        class="mt-4 text-white underline">
+        Try Again
+      </button>
+
+    </div>
+
+    <!-- Services grid -->
+    <div
+      *ngIf="!isLoading && !errorMessage"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <app-service-board
+        *ngFor="let service of services"
+        [service]="service">
+      </app-service-board>
+
+    </div>
+
   </div>
+
 </section>
